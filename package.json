@@ -1,0 +1,23 @@
+{
+  "name": "servidor-taller",
+  "version": "1.0.0",
+  "description": "Servidor de aplicativo web para un taller de motos.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josewp10/servidor-taller.git"
+  },
+  "author": "Josewp10",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Josewp10/servidor-taller/issues"
+  },
+  "homepage": "https://github.com/Josewp10/servidor-taller#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
