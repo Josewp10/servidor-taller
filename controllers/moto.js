@@ -98,7 +98,7 @@ let consultarMoto = async (placa) => {
     let _service = new ServicePg();
     let sql = `SELECT placa, estado, clase, marca, modelo, color, cilindraje, id_propietario, nro_soat, vencimiento_soat, nro_tecnomecanica, vencimiento_tecnomecanica
       FROM public.motos where placa = $1`;
-    let respuesta = await _service.ejecutarSql(sql);
+    let respuesta = await _service.ejecutarSql(sql,[placa]);
     return respuesta;
   };
 

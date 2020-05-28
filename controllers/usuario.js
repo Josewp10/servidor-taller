@@ -41,6 +41,13 @@ let consultarUsuarios = async () =>{
   return respuesta;
 };
 
+let consultarUsuario = async (documento) =>{
+    let _service = new ServicioPg();
+    let sql = `SELECT * FROM public.usuarios WHERE documento = $1`;
+    let respuesta = await _service.ejecutarSql(sql, [documento]);
+    return respuesta;
+}
+
 let eliminarUsuario = async (documento) => {
     let _servicio = new ServicioPg();
     console.log(documento);
@@ -70,4 +77,4 @@ let eliminarUsuario = async (documento) => {
     return respuesta;
   };
 
-  module.exports = {crearUsuario, eliminarUsuario, editarUsuario, consultarUsuarios, validarUsuario};
+  module.exports = {crearUsuario, eliminarUsuario, editarUsuario,consultarUsuario, consultarUsuarios, validarUsuario};

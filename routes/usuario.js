@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const {crearUsuario,consultarUsuarios,editarUsuario,eliminarUsuario, validarUsuario}= require("../controllers/usuario");
+const {crearUsuario,consultarUsuarios,consultarUsuario,editarUsuario,eliminarUsuario, validarUsuario}= require("../controllers/usuario");
 
 //Trae todos los usuarios en la base de datos
 router.get("/usuario", (req, res) => {
@@ -15,6 +15,27 @@ router.get("/usuario", (req, res) => {
           res.send(error);
       });
     }catch(error){
+      res.send(error)
+    }
+});
+
+//Trae un usuario filtrado por documento
+router.get("/usuario/:documento", (req, res) => {
+  let documento = req.params.documento;
+  console.log(documento);
+  
+  try{
+  consultarUsuario(documento)
+      .then(answerDB => {
+          let records = answerDB.rows;
+          res.send({ ok: true, info: records, mensaje: "Usuario consultado" });
+      })
+      .catch(error => {
+        console.log(error);        
+          res.send(error);
+      });
+    }catch(error){
+      console.log(error);  
       res.send(error)
     }
 });

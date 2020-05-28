@@ -23,11 +23,12 @@ app.use(vs, route_usuario);
 const route_motos = require("./routes/moto"); 
 app.use(vs, route_motos);
 
+const route_mantenimientos = require("./routes/mantenimientos"); 
+app.use(vs, route_mantenimientos);
 
-/*
-const route_autenticacion = require("./routes/autenticacion"); 
-app.use(route_autenticacion);*/
-
+app.use('/', (req,res)=>{
+  req.status(400).send({ ok: false, info: error, mensaje: "El recurso no exisite" });
+})
 //Puerto
 const port = process.env.PORT || 3001;
 //Levantamiento

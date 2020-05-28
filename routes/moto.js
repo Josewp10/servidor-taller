@@ -26,6 +26,27 @@ router.get("/moto", (req, res) => {
     }
 });
 
+//Trae una moto filtrada por placa
+router.get("/moto/:placa", (req, res) => {
+  let placa = req.params.placa;
+  console.log(placa);
+  
+  try{
+  consultarMoto(placa)
+      .then(answerDB => {
+          let records = answerDB.rows;
+          res.send({ ok: true, info: records, mensaje: "Moto consultadas" });
+      })
+      .catch(error => {
+        console.log(error);        
+          res.send(error);
+      });
+    }catch(error){
+      console.log(error);  
+      res.send(error)
+    }
+});
+
 //Crea un nuevo moto en la base de datos
 router.post("/moto", (req, res) => {
   try {
