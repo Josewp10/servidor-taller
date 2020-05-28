@@ -17,6 +17,8 @@ const vs = "/api/v1/"
 const route_autenticacion = require("./routes/autenticacion"); 
 app.use(vs, route_autenticacion);
 
+
+
 const route_usuario = require("./routes/usuario"); 
 app.use(vs, route_usuario);
 
@@ -27,8 +29,8 @@ const route_mantenimientos = require("./routes/mantenimientos");
 app.use(vs, route_mantenimientos);
 
 app.use('/', (req,res)=>{
-  req.status(400).send({ ok: false, info: error, mensaje: "El recurso no exisite" });
-})
+  res.status(400).send({ ok: false, info: {}, mensaje: "El recurso no exisite" });
+});
 //Puerto
 const port = process.env.PORT || 3001;
 //Levantamiento
