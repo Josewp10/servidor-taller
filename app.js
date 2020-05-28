@@ -11,13 +11,20 @@ app.get("/", (req, res) => {
   res.send("Bienvenido al proyecto del taller!!!");
 });
 
+//Versión del apo
+const vs = "/api/v1/"
+
+const route_autenticacion = require("./routes/autenticacion"); 
+app.use(vs, route_autenticacion);
 
 const route_usuario = require("./routes/usuario"); 
-app.use(route_usuario);
+app.use(vs, route_usuario);
 
-/*const route_motos = require("./routes/motos"); 
-app.use(route_motos);
+const route_motos = require("./routes/moto"); 
+app.use(vs, route_motos);
 
+
+/*
 const route_autenticacion = require("./routes/autenticacion"); 
 app.use(route_autenticacion);*/
 
